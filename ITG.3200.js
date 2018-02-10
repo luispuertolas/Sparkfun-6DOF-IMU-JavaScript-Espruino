@@ -1,3 +1,9 @@
+function onInit(){
+      LoopbackA.setConsole();
+      setWatch(function(){ USB.setConsole();}, BTN, true);
+}
+
+
 function ITG3200(i2c, options) {
   this.i2c = i2c;
   this.address = (options && options.address) || ITG3200.DEFAULT_ADDRESS;
