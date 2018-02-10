@@ -95,6 +95,6 @@ ITG3200.X_MSB_BUF = 0x1D;
 ITG3200.TEMPERATURE_MSB_BUF = 0x1B;
 ITG3200.ANGLES_BIT_NUM = 6;
 ITG3200.ALL_DATA_BIT_NUM = 8;
-ITG3200.SENSITIVITY = 14.375 / 25;  // sensitivity  of 14.375 LSBs per °/sec
+ITG3200.SENSITIVITY = 14.375;  // sensitivity  of 14.375 LSBs per °/sec
 
 exports.connect = function (i2c, options) { return new ITG3200(i2c, options); };
