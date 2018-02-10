@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // FIXME : it could be far better to use interrupt to get new data
 ITG3200.prototype.calibrateOffset = function () {
   var d = this.getRawAnglesValues();
