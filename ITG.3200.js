@@ -1,30 +1,3 @@
-
-Skip to content
-This repository
-
-    Pull requests
-    Issues
-    Marketplace
-    Explore
-
-    @luispuertolas
-
-1
-0
-
-    1
-
-polhomarkho/espruino-itg-3200
-Code
-Issues 0
-Pull requests 0
-Projects 0
-Wiki
-Insights
-espruino-itg-3200/ITG3200.js
-7232567 on May 28, 2016
-@polhomarkho polhomarkho First draft.
-101 lines (89 sloc) 3.42 KB
 function ITG3200(i2c, options) {
   this.i2c = i2c;
   this.address = (options && options.address) || ITG3200.DEFAULT_ADDRESS;
