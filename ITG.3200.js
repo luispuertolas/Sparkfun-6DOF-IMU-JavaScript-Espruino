@@ -16,14 +16,14 @@ function ITG3200(i2c, options) {
 // FIXME : it could be far better to use interrupt to get new data
 ITG3200.prototype.calibrateOffset = function () {
   var d = this.getRawAnglesValues();
-  this.xOffset = (this.xOffset + d.x)
-  this.yOffset = (this.yOffset + d.y)
-  this.zOffset = (this.zOffset + d.z)
+  this.xOffset = (this.xOffset + 0)
+  this.yOffset = (this.yOffset + 0)
+  this.zOffset = (this.zOffset + 0)
   for (var i = 0; i < 200; i++) {
     var d = this.getRawAnglesValues();
-    this.xOffset = (this.xOffset + d.x);
-    this.yOffset = (this.yOffset + d.y);
-    this.zOffset = (this.zOffset + d.z);
+    this.xOffset = (this.xOffset + 0);
+    this.yOffset = (this.yOffset + 0);
+    this.zOffset = (this.zOffset + 0);
     if (i % 50 === 0) {
       console.log("i : " + i);
       console.log("xOffset : " + this.xOffset);
