@@ -1,3 +1,30 @@
+
+Skip to content
+This repository
+
+    Pull requests
+    Issues
+    Marketplace
+    Explore
+
+    @luispuertolas
+
+1
+0
+
+    1
+
+polhomarkho/espruino-itg-3200
+Code
+Issues 0
+Pull requests 0
+Projects 0
+Wiki
+Insights
+espruino-itg-3200/ITG3200.js
+7232567 on May 28, 2016
+@polhomarkho polhomarkho First draft.
+101 lines (89 sloc) 3.42 KB
 function ITG3200(i2c, options) {
   this.i2c = i2c;
   this.address = (options && options.address) || ITG3200.DEFAULT_ADDRESS;
@@ -29,7 +56,8 @@ ITG3200.prototype.calibrateOffset = function () {
     console.log("yOffset : " + this.yOffset);
     console.log("zOffset : " + this.zOffset);
     console.log(" ");
-    }
+    
+  }
 };
 
 // debug function
@@ -56,9 +84,9 @@ ITG3200.prototype.read = function () {
   this.i2c.writeTo(this.address, ITG3200.TEMPERATURE_MSB_BUF);
   var d = this.i2c.readFrom(this.address, ITG3200.ALL_DATA_BIT_NUM);
   return {
-    x:    ((ITG3200.fromTwoComplement(d[2], d[3]) - this.xOffset) * 25),
-    y:    ((ITG3200.fromTwoComplement(d[4], d[5]) - this.yOffset) * 25),
-    z:    ((ITG3200.fromTwoComplement(d[6], d[7]) - this.zOffset) * 25),
+    x:    (ITG3200.fromTwoComplement(d[2], d[3]) - this.xOffset) / ITG3200.SENSITIVITY,
+    y:    (ITG3200.fromTwoComplement(d[4], d[5]) - this.yOffset) / ITG3200.SENSITIVITY,
+    z:    (ITG3200.fromTwoComplement(d[6], d[7]) - this.zOffset) / ITG3200.SENSITIVITY,
     temp: 35 + (ITG3200.fromTwoComplement(d[0], d[1])+ 13200) / 280
   };
 };
