@@ -30,7 +30,6 @@ ITG3200.prototype.calibrateOffset = function () {
     console.log("zOffset : " + this.zOffset);
     console.log(" ");
     }
-  }
 };
 
 // debug function
