@@ -24,7 +24,7 @@ ITG3200.prototype.calibrateOffset = function () {
     this.xOffset = (this.xOffset + d.x) / 2;
     this.yOffset = (this.yOffset + d.y) / 2;
     this.zOffset = (this.zOffset + d.z) / 2;
-    if (i % 2 === 0) {
+    if (i % 50 === 0) {
       console.log("i : " + i);
       console.log("xOffset : " + this.xOffset);
       console.log("yOffset : " + this.yOffset);
