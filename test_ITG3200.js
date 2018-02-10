@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 I2C1.setup( { scl: B6, sda: B7 } );
 var gyro = require('https://github.com/polhomarkho/espruino-itg-3200/blob/master/ITG3200.js').connect( I2C1 );
 
