@@ -1,11 +1,26 @@
+function ITG3200(i2c, options) {
+  this.i2c = i2c;
+  this.address = (options && options.address) || ITG3200.DEFAULT_ADDRESS;
+
+  this.xOffset = 0;
+  this.yOffset = 0;
+  this.zOffset = 0;
+
+  // init
+  this.write8(ITG3200.PWR_MGM, 0x00);
+  this.write8(ITG3200.SMPLRT_DIV, 0x07);
+  this.write8(ITG3200.DLPF_FS, 0x1E);  // FS_SEL = 3, DLPF_CFG = 6
+  this.write8(ITG3200.INT_CFG, 0x00);  // TODO modify to enable interrup on new data
+}
+
 // FIXME : it could be far better to use interrupt to get new data
-function ITG3200.prototype.calibrateOffset = function () {
+ITG3200.prototype.calibrateOffset = function () {
   var d = this.getRawAnglesValues();
-  this.xOffset = (this.xOffset + d.x);
-  this.yOffset = (this.yOffset + d.y);
-  this.zOffset = (this.zOffset + d.z);
+  this.xOffset = (this.xOffset + d.x)
+  this.yOffset = (this.yOffset + d.y)
+  this.zOffset = (this.zOffset + d.z)
   for (var i = 0; i < 200; i++) {
-    d = this.getRawAnglesValues();
+    var d = this.getRawAnglesValues();
     this.xOffset = (this.xOffset + d.x) / 2;
     this.yOffset = (this.yOffset + d.y) / 2;
     this.zOffset = (this.zOffset + d.z) / 2;
