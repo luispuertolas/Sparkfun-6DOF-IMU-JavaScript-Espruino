@@ -1,8 +1,6 @@
-function onInit(){
-      LoopbackA.setConsole();
-      setWatch(function(){ USB.setConsole();}, BTN, true);
-}
-
+Serial5.setup(9600);
+Serial4.on('data', function (data) { print("<Serial4> "+data); });
+Serial4.print("Hello World");
 
 function ITG3200(i2c, options) {
   this.i2c = i2c;
